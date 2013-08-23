@@ -1,3 +1,6 @@
+/**
+ * (c) 2013, Cybozu.
+ */
 goog.require('nhiro.repos');
 goog.require('main.main');
 $(function(){

@@ -1,3 +1,7 @@
+/**
+ * box-arrow
+ * (c) 2013, Cybozu.
+ */
 goog.require('nhiro.V2');
 goog.require('nhiro.assert');
 goog.require('nhiro.convex_hull');
@@ -626,10 +630,6 @@ main.main = function() {
         paper.path('M0,0L0,0')
         .attr({stroke: '#000', 'stroke-width': 2}));
 
-    add_box('hoge');
-    add_box('hogehoge').move(100, 300);
-    add_box('hogehogehogehoge').move(500, 100);
-    add_box('hogehogehogehogehogehogehogehoge').move(400, 200);
     function change_group(box, to) {
         for (var i = 0; i < groups.length; i++) {
             var g = groups[i];
@@ -642,9 +642,24 @@ main.main = function() {
         groups[to].boxes.push(box);
         groups = groups.filter(function(x) {return x.boxes.length > 0});
     }
-    change_group(groups[3].boxes[0], 2);
-    add_line(boxes[0], boxes[1], 'double_arrow');
-    add_line(boxes[0], boxes[1], 'double_tip');
+
+    // sample preset for demo
+    add_box('BoxArrow sample').move(100, 200);
+    add_box('Auto adjust text').move(100, 350);
+    add_box('Draggable').move(275, 350);
+    add_box('Arrows').move(450, 350);
+    add_box('Single Tip').move(275, 550);
+    add_box('Double Arrow').move(450, 550);
+    add_box('Dashed Line').move(625, 550);
+    add_box('Grouping').move(625, 350);
+
+    change_group(groups[7].boxes[0], 1);
+    change_group(groups[3].boxes[0], 1);
+    change_group(groups[2].boxes[0], 1);
+
+    add_line(boxes[3], boxes[4], 'single_tip');
+    add_line(boxes[3], boxes[5], 'double_arrow');
+    add_line(boxes[3], boxes[6], 'dashed_line');
 
 
     update_group_view();
